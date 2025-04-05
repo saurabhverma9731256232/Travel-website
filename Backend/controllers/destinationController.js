@@ -16,7 +16,9 @@ export const getDestinations = async (req,res) =>{
 
 export const addDestination = async (req,res) =>{
     try {
-        const{name,location,description,price,image} = req.body;
+        const{name,location,description,price} = req.body;
+        const image = req.file ? req.file.path : "https://via.placeholder.com/400x300?text=No+Image"; // Use placeholder if no image
+
         const newDestination = new Destination({name,location,description,price,image});
         await newDestination.save();
         res.status(200).json({message:"Destination added successfully"});

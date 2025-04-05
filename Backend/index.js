@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log("Connected to MongoDB");
 }).catch((err)=>{
@@ -22,8 +23,8 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 const PORT = process.env.PORT || 5000;
 
 app.use('/api/auth',authRoutes);
-app.use('/api/booking',bookingRoutes);
-app.use('/api/destination',destinationRoutes);
+app.use('/api/bookings',bookingRoutes);
+app.use('/api/destinations',destinationRoutes);
 app.use('/api/review',reviewRoutes);
 
 
